@@ -5,9 +5,13 @@
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
+    "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:basesgod": "node dist/basesgod/server/server.mjs"
+    "serve:ssr:basesgod": "node dist/basesgod/server/server.mjs",
+    "delete:docs": "rimraf docs",
+    "copy:dist": "copyfiles dist/basesgod/browser/* ./docs -f"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +25,7 @@
     "@angular/platform-server": "^17.0.0",
     "@angular/router": "^17.0.0",
     "@angular/ssr": "^17.0.8",
+    "del-cli": "^5.1.0",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -35,12 +40,15 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "@types/uuid": "^9.0.8",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "mkdirp": "^3.0.1",
+    "rimraf": "^5.0.5",
     "typescript": "~5.2.2"
   }
 }
